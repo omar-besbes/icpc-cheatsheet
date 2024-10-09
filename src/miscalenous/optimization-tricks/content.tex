@@ -1,0 +1,29 @@
+\subsection{Optimization Tricks}
+
+\subsubsection{Bit Hacks}
+\begin{itemize}
+    \item \( x \& -x \) gives the least significant bit in \( x \).
+    \item Use \inlinecode!for (int x = m; x;) { --x &= m; }! to loop over all subset
+          masks of \( m \) (except \( m \) itself).
+    \item To find the next number after \( x \) with the same number of bits set, use:
+          \inlinecode!c = x &-x, r = x + c; (((r^x) >> 2) / c) | r!
+    \item For cumulative sums of subsets, use:
+          \begin{codesnippet}
+    for (int b=0; b < k; i++)
+        for (int i=0; i < (1<<k); i++) 
+            if (i&1<<b) D[i] += D[i ^ (1<<b)]; 
+          \end{codesnippet}
+\end{itemize}
+
+\subsubsection{Pragmas}
+\begin{itemize}
+    \item Use \inlinecode!#pragma GCC optimize ("Ofast")! to enable GCC's
+          auto-vectorization and better optimization for floating points (assumes
+          associativity and turns off denormals).
+    \item Use \inlinecode!#pragma GCC target ("avx,avx2")! to potentially double
+          performance of vectorized code, though it may cause crashes on older machines.
+          Consider using \inlinecode!#pragma GCC target ("sse4")! for older
+          architectures.
+    \item Use \inlinecode!#pragma GCC optimize ("trapv")! to kill the program on integer
+          overflows (but it may slow down execution).
+\end{itemize}

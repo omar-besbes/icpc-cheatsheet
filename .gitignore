@@ -1,0 +1,49 @@
+# LaTeX intermediate files
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+
+# Editor backup and swap files
+*~
+*.bak
+*.swp
+
+# Compiled PDFs
+*.pdf
+
+# Ignore HTML build files
+*.html
+*.css
+*.js
+*.xml
+
+# Ignore other generated files
+*.zip
+*.tar.gz
+*.tar
+*.gz
+*.log
+*.sh
+*.tmp
+.DS_Store
+
+# Ignore build directories
+.build/
+build/
+dist/
+
+# Ignore python related files
+*.pyc
+*.pyo
+__pycache__/
+env/
+venv/
+*.egg-info/

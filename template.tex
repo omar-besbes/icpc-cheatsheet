@@ -1,0 +1,104 @@
+\documentclass[a4paper,landscape]{article} % Define the document class and set to A4 paper in two-column format
+
+% Package Imports
+\usepackage{amsmath}         % For advanced mathematical formatting
+\usepackage{listings}        % For including and formatting source code
+\usepackage{geometry}        % For setting page margins
+\usepackage{titlesec}        % For customizi    ng section title formatting
+\usepackage{fancyhdr}        % For creating custom headers and footers
+\usepackage{graphicx}        % For including images and graphics
+\usepackage{hyperref}        % For including hyperlinks
+\usepackage{lipsum}          % For including dummy text
+\usepackage{multicol}        % For splitting the document to columns
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Package Settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Set the page margins
+\geometry{
+    margin=1in, bottom=0.7in, left=0.3in, right=0.3in, % Sets 1-inch margins on top/bottom and 0.5-inch margins on sides
+    columnsep=0.2in,                                   % Adjusts column separation
+}
+
+% Sets the thickness of the line between columns
+\setlength{\columnseprule}{0.4pt}
+
+% Hyperlinks settings
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=blue,
+}
+
+% Code highlighting settings
+\lstset{
+    basicstyle=\footnotesize\ttfamily,        % Use a monospaced font for code
+    breaklines=true,                          % Enable line breaking within code blocks
+    frame=t,                                  % Disable frame around the code
+    tabsize=1,                                % Set tab size to 2 spaces
+    captionpos=b,                             % Set the caption position to bottom
+    numbers=none,                             % Show line numbers on the left
+    language=C++,                             % Default language for syntax highlighting
+    keywordstyle=\color{blue}\ttfamily,       % Set keywords (like int, return) to be blue and in monospaced font
+    stringstyle=\color{red}\ttfamily,         % Set strings (like "example") to be red and in monospaced font
+    commentstyle=\color{red}\ttfamily,        % Set comments to be red and in monospaced font
+    morecomment=[l][\color{red}]{\#},         % Set preprocessor directives (like #define, #include) to be magenta
+}
+
+% Fancy header and footer settings
+\pagestyle{fancy}
+\fancyhf{}  % Clear all header and footer fields
+\fancyfoot[C]{\thepage}      % Center the page number at the bottom
+\fancyhead[L]{\leftmark}     % Section name on the left header
+\fancyhead[R]{\rightmark}    % Subsection name on the right header
+
+% Title formatting for sections
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule] % Format section titles with larger, bold text and a rule below
+\titleformat{\subsection}{\bfseries}{}{0em}{} % Format subsection titles in bold
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Custom Commands, Environments and Aliases
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\importcode}[1]{
+    \lstinputlisting{#1}
+}
+
+% Alias for inline code
+\let\inlinecode\lstinline
+
+% Define a new environment for code snippets without frame and numbers
+\lstnewenvironment{codesnippet}{
+    \lstset{
+        frame=none,           % No frame
+        numbers=none          % No line numbers
+    }
+}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin the document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% Title, author, and date information
+\title{ICPC Cheat Sheet}   % Title of the cheat sheet
+\author{Omar Besbes}       % Author's name (replace with your name)
+\date{}                    % Leave the date empty for the current date
+% \maketitle                 % Create the title page
+
+\begin{multicols*}{3}
+
+    % Generate a table of contents
+    \tableofcontents           % Automatically generate the table of contents based on sections
+    \newpage                   % Start a new page after the table of contents
+
+    % Include content from an external file
+    \input{src/content.tex}    % This line includes the content file, where topics and articles will be defined
+
+\end{multicols*}
+
+\end{document}
