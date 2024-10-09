@@ -4,12 +4,13 @@
 \usepackage{amsmath}         % For advanced mathematical formatting
 \usepackage{listings}        % For including and formatting source code
 \usepackage{geometry}        % For setting page margins
-\usepackage{titlesec}        % For customizi    ng section title formatting
+\usepackage{titlesec}        % For customizing section title formatting
 \usepackage{fancyhdr}        % For creating custom headers and footers
 \usepackage{graphicx}        % For including images and graphics
 \usepackage{hyperref}        % For including hyperlinks
 \usepackage{lipsum}          % For including dummy text
 \usepackage{multicol}        % For splitting the document to columns
+\usepackage{xfrac}           % For creating fractions with improved layout and style
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Package Settings
@@ -62,6 +63,33 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Custom Commands, Environments and Aliases
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\noin}{\noindent}
+\newcommand{\logit}{\textrm{logit}}
+\newcommand{\var}{\textrm{Var}}
+\newcommand{\cov}{\textrm{Cov}}
+\newcommand{\corr}{\textrm{Corr}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\Bern}{\textrm{Bern}}
+\newcommand{\Bin}{\textrm{Bin}}
+\newcommand{\Beta}{\textrm{Beta}}
+\newcommand{\Gam}{\textrm{Gamma}}
+\newcommand{\Expo}{\textrm{Expo}}
+\newcommand{\Pois}{\textrm{Pois}}
+\newcommand{\Unif}{\textrm{Unif}}
+\newcommand{\Geom}{\textrm{Geom}}
+\newcommand{\NBin}{\textrm{NBin}}
+\newcommand{\Hypergeometric}{\textrm{HGeom}}
+\newcommand{\HGeom}{\textrm{HGeom}}
+\newcommand{\Mult}{\textrm{Mult}}
+
+\newcommand{\pausecol}{
+    \end{multicols*}
+}
+
+\newcommand{\resumecol}{
+    \begin{multicols*}{3}
+}
 
 \newcommand{\importcode}[1]{
     \lstinputlisting{#1}
