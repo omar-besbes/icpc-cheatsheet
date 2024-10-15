@@ -1,10 +1,8 @@
 /**
- * Description: pi[x] computes the length of the longest prefix of s that ends
- * at x, other than s[0...x] itself (abacaba -> 0010123). Can be used to find
- * all occurrences of a string.
+ * pi[x] computes the length of the longest prefix of s that ends
+ * at x, other than s[0...x] itself (abacaba -> 0010123). 
+ * Can be used to find all occurrences of a string.
  */
-#include "bits/stdc++.h"
-using namespace std;
 
 vector<int> pi(const string& s) {
    vector<int> p(s.length());
