@@ -35,6 +35,7 @@ jobs:
         run: |
           mkdir -p .build/pdf
           pdflatex -output-directory=.build/pdf -jobname=cheatsheet template.tex
+          pdflatex -output-directory=.build/pdf -jobname=cheatsheet template.tex
           mkdir -p upload
           mv .build/pdf/cheatsheet.pdf upload/cheatsheet.pdf
 
