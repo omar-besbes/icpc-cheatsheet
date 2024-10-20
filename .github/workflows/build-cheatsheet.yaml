@@ -20,6 +20,24 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install g++
+        run: sudo apt-get install -y g++
+
+      - name: Configure CMake
+        run: cmake --preset default
+
+      - name: Build project
+        run: cmake --build --preset default
+
+      - name: Test project
+        run: ctest --preset default
+
   build:
     runs-on: ubuntu-latest
     steps:
