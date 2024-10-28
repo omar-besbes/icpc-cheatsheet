@@ -1,0 +1,9 @@
+[build]
+command = """
+      sudo apt-get update
+      sudo apt-get install -y texlive texlive-latex-extra texlive-fonts-recommended texlive-science
+      mkdir -p .build/pdf
+      pdflatex -output-directory=.build/pdf -jobname=cheatsheet template.tex
+      pdflatex -output-directory=.build/pdf -jobname=cheatsheet template.tex
+   """
+publish = ".build/pdf/cheatsheet.pdf"
