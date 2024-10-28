@@ -1,9 +1,7 @@
 [build]
 command = """
-      apt-get update
-      apt-get install -y texlive texlive-latex-extra texlive-fonts-recommended texlive-science
-      mkdir -p .build/pdf
-      pdflatex -output-directory=.build/pdf -jobname=cheatsheet template.tex
-      pdflatex -output-directory=.build/pdf -jobname=cheatsheet template.tex
+      curl --proto '=https' --tlsv1.2 -fsSL https://drop-sh.fullyjustified.net | sh
+      ./tectonic -outfmt pdf template.tex
+      mv template.pdf cheatsheet.pdf
    """
-publish = ".build/pdf/cheatsheet.pdf"
+publish = "cheatsheet.pdf"
