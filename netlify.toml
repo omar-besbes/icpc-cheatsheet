@@ -1,7 +1,0 @@
-[build]
-command = """
-      curl --proto '=https' --tlsv1.2 -fsSL https://drop-sh.fullyjustified.net | sh
-      ./tectonic -outfmt pdf template.tex
-      mv template.pdf cheatsheet.pdf
-   """
-publish = "cheatsheet.pdf"
