@@ -1,0 +1,42 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 22,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "default",
+      "hidden": false,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/.build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "default",
+      "hidden": false,
+      "configurePreset": "default",
+      "configuration": "Debug"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "default",
+      "hidden": false,
+      "configurePreset": "default",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "noTestsAction": "error",
+        "stopOnFailure": false,
+        "jobs": 4
+      }
+    }
+  ]
+}
