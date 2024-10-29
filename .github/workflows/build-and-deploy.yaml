@@ -34,7 +34,7 @@ jobs:
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
-          name: cheatsheet-${{ github.sha }}
+          name: cheatsheet-${{ github.run_id }}
           include-hidden-files: true
           path: cheatsheet.pdf
 
@@ -56,7 +56,7 @@ jobs:
       - name: Download PDF artifact
         uses: actions/download-artifact@v4
         with:
-          name: cheatsheet-${{ github.sha }}
+          name: cheatsheet-${{ github.run_id }}
           path: .build
 
       - name: Setup Netlify CLI
@@ -75,7 +75,7 @@ jobs:
             netlify deploy \
               --dir .build \
               --message="Deploy preview for PR #${{ github.event.pull_request.number }}" \
-              --alias="preview-${{ github.sha }}" | \
+              --alias="preview-${{ github.run_id }}" | \
               tee cmd.log
             deploy_url=$(grep 'Website draft URL:' cmd.log | awk '{print $NF}')
           elif [ "${{ github.ref }}" == "refs/heads/main" ]; then
@@ -87,7 +87,7 @@ jobs:
             deploy_url=$(grep 'Unique deploy URL:' cmd.log | awk '{print $NF}')
           fi
 
-          build_logs=$(grep 'Build logs:' prod.log | awk '{print $NF}')
+          build_logs=$(grep 'Build logs:' cmd.log | awk '{print $NF}')
 
           echo "deploy_url=$deploy_url" >> "$GITHUB_OUTPUT"
           echo "build_logs=$build_logs" >> "$GITHUB_OUTPUT"
