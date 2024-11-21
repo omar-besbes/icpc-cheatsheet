@@ -11,7 +11,7 @@ struct Hashing {
       int n = s.length();
       // change if s contains other chars than a-z
       // primes should be greater than number of possible characters
-      vector primes{31, 37, 43};
+      vector primes{37, 41, 43};
       p.assign(primes.size(), vector<ll>(n + 1));
       pref.assign(primes.size(), vector<ll>(n + 1));
       for (int i = 0; i < primes.size(); i++) p[i][0] = 1, p[i][1] = primes[i];

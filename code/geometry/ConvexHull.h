@@ -5,7 +5,7 @@
  */
 
 template <class P>
-vector<P> solve(vector<P> &v) {
+vector<P> convexHull(vector<P> &v) {
    int n = v.size();
    vector<P> ch;
    auto chk = [&](P z) {

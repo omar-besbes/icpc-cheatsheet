@@ -1,6 +1,6 @@
-\subsection{Optimization Tricks}
+\section{Optimization Tricks}
 
-\subsubsection{Bit Hacks}
+\subsection{Bit Hacks}
 \begin{itemize}
     \item \( x \& -x \) gives the least significant bit in \( x \).
     \item Use \inlinecode!for (int x = m; x;) { --x &= m; }! to loop over all subset
@@ -15,7 +15,7 @@
           \end{codesnippet}
 \end{itemize}
 
-\subsubsection{Pragmas}
+\subsection{Pragmas}
 \begin{itemize}
     \item Use \inlinecode!#pragma GCC optimize ("Ofast")! to enable GCC's
           auto-vectorization and better optimization for floating points (assumes
