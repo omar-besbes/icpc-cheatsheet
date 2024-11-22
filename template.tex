@@ -131,14 +131,12 @@
 % \maketitle                 % Create the title page
 
 \begin{multicols*}{3}
-
     % Generate a table of contents
     \tableofcontents           % Automatically generate the table of contents based on sections
     \newpage                   % Start a new page after the table of contents
-
-    % Include content from an external file
-    \input{src/content.tex}    % This line includes the content file, where topics and articles will be defined
-
 \end{multicols*}
+
+% Include content from an external file
+\input{src/content.tex}    % This line includes the content file, where topics and articles will be defined
 
 \end{document}

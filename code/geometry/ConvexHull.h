@@ -1,7 +1,8 @@
 /**
- * Returns a vector of the points of the convex hull in counter-clockwise order.
- * Points on the edge of the hull between two other points are considered part
- * of the hull.
+ * Returns a vector of the points of the convex hull in
+ * counter-clockwise order.
+ * Points on the edge of the hull between two other points are
+ * considered part of the hull.
  */
 
 template <class P>

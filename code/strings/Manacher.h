@@ -1,7 +1,7 @@
 /**
  * For each position in a string, computes p[0][i] = half length of
- * longest even palindrome around pos i (abaccaba -> 00004000), p[1][i] = longest
- * odd (half rounded down) (abacaba -> 1214121).
+ * longest even palindrome around pos i (abaccaba -> 00004000),
+ * p[1][i] = longest odd (half rounded down) (abacaba -> 1214121).
  */
 
 struct Manacher {
@@ -21,7 +21,7 @@ struct Manacher {
    }
    bool check(int l, int r) {
       int z = (r - l + 1) & 1;
-		int m = (l + r + 1) / 2;
-		return p[z][m] >= r - m + 1;
-	}
+      int m = (l + r + 1) / 2;
+      return p[z][m] >= r - m + 1;
+   }
 };
