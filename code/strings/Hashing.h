@@ -3,7 +3,6 @@
  */
 
 struct Hashing {
-  typedef long long ll;
   const ll mod = 1e9 + 7;
   vector<vector<ll>> p, pref;
   // assuming s is only composed of a-z characters
