@@ -2,28 +2,57 @@
 
 \subsection{Bit Hacks}
 \begin{itemize}
-    \item \( x \& -x \) gives the least significant bit in \( x \).
-    \item Use \inlinecode!for (int x = m; x;) { --x &= m; }! to loop over all subset
-          masks of \( m \) (except \( m \) itself).
-    \item To find the next number after \( x \) with the same number of bits set, use:
-          \inlinecode!c = x &-x, r = x + c; (((r^x) >> 2) / c) | r!
-    \item For cumulative sums of subsets, use:
-          \begin{codesnippet}
-    for (int b=0; b < k; i++)
-        for (int i=0; i < (1<<k); i++) 
-            if (i&1<<b) D[i] += D[i ^ (1<<b)]; 
-          \end{codesnippet}
+      \item \( n \& -n \) gives the least significant bit in \( n \).
+      \item \( n | (1 << x) \) sets the $x$-th bit in the number \( n \).
+      \item \( n \land (1 << x) \) flips the $x$-th bit in the number \( n \).
+      \item \( n \& \sim (1 << x) \) clears the $x$-th bit in the number \( n \).
+      \item \( n \& (n + 1) \) clears all trailing ones in the number \( n \).
+      \item \( n | (n + 1) \) sets the last cleared bit in the number \( n \).
+      \item Use \inlinecode!for (int x = m; x;) { --x &= m; }! to loop over all subset
+            masks of \( m \) (except \( m \) itself).
+      \item To find the next number after \( x \) with the same number of bits set, use:
+            \inlinecode!c = x &-x, r = x + c; (((r^x) >> 2) / c) | r!
+      \item For cumulative sums of subsets, use:
+            \begin{codesnippet}
+for (int b=0; b < k; i++)
+      for (int i=0; i < (1<<k); i++)
+            if (i&1<<b) D[i] += D[i ^ (1<<b)];
+            \end{codesnippet}
 \end{itemize}
+
+\subsection{Language \& Compiler Support}
+C++ supports some of the bit hacks since C++20 via the bit standard library:
+\begin{itemize}
+      \item \inlinecode!has_single_bit!: checks if the number is a power of two
+      \item \inlinecode!bit_ceil! / \inlinecode!bit_floor!: round up/down to the next power of two
+      \item \inlinecode!rotl! / \inlinecode!rotr!: rotate the bits in the number
+      \item \inlinecode!countl_zero! / \inlinecode!countr_zero! / \inlinecode!countl_one! / \inlinecode!countr_one!: count the leading/trailing zeros/ones
+      \item \inlinecode!popcount!: count the number of set bits
+\end{itemize}
+
+GCC defines a list at Built-in Functions Provided by GCC that also work in
+older versions of C++:
+\begin{itemize}
+      \item \inlinecode!__builtin_popcount(unsigned int)! returns the number of set bits (\inlinecode!__builtin_popcount(0b0001'0010'1100) == 4!)
+      \item \inlinecode!__builtin_ffs(int)! finds the index of the first (most right) set bit (\inlinecode!__builtin_ffs(0b0001'0010'1100) == 3!)
+      \item \inlinecode!__builtin_clz(unsigned int)! the count of leading zeros (\inlinecode!__builtin_clz(0b0001'0010'1100) == 23!)
+      \item \inlinecode!__builtin_ctz(unsigned int)! the count of trailing zeros (\inlinecode!__builtin_ctz(0b0001'0010'1100) == 2!)
+      \item \inlinecode!__builtin_parity(x)! the parity (even or odd) of the number of ones in the bit representation
+\end{itemize}
+
+Note that some of the operations (both the C++20 functions and the Compiler
+Built-in ones) might be quite slow in GCC if you don't enable a specific
+compiler target with \inlinecode!#pragma GCC target("popcnt")!.
 
 \subsection{Pragmas}
 \begin{itemize}
-    \item Use \inlinecode!#pragma GCC optimize ("Ofast")! to enable GCC's
-          auto-vectorization and better optimization for floating points (assumes
-          associativity and turns off denormals).
-    \item Use \inlinecode!#pragma GCC target ("avx,avx2")! to potentially double
-          performance of vectorized code, though it may cause crashes on older machines.
-          Consider using \inlinecode!#pragma GCC target ("sse4")! for older
-          architectures.
-    \item Use \inlinecode!#pragma GCC optimize ("trapv")! to kill the program on integer
-          overflows (but it may slow down execution).
+      \item Use \inlinecode!#pragma GCC optimize ("Ofast")! to enable GCC's
+            auto-vectorization and better optimization for floating points (assumes
+            associativity and turns off denormals).
+      \item Use \inlinecode!#pragma GCC target ("avx,avx2")! to potentially double
+            performance of vectorized code, though it may cause crashes on older machines.
+            Consider using \inlinecode!#pragma GCC target ("sse4")! for older
+            architectures.
+      \item Use \inlinecode!#pragma GCC optimize ("trapv")! to kill the program on integer
+            overflows (but it may slow down execution).
 \end{itemize}

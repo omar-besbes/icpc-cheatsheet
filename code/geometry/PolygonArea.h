@@ -7,7 +7,7 @@
 
 template <class T>
 T polygonArea2(vector<Point<T>>& v) {
-   T ans = v.back().cross(v[0]);
-   for (int i = 0; i < v.size() - 1; i++) ans += v[i].cross(v[i + 1]);
-   return ans;
+  T ans = v.back().cross(v[0]);
+  for (int i = 0; i < v.size() - 1; i++) ans += v[i].cross(v[i + 1]);
+  return ans;
 };
