@@ -69,7 +69,7 @@
 {\Huge}                     % Style of the chapter title
 
 % Spacing adjustment for chapter titles (no page break)
-\titlespacing*{\chapter}{0pt}{0pt}{10pt}  % 0pt top space, 0pt bottom space, 10pt space after title
+\titlespacing*{\chapter}{0pt}{-25pt}{10pt}  % 0pt left space, 0pt top space, 10pt space after title
 
 % Remove the page break before chapters
 \makeatletter
@@ -109,6 +109,10 @@
 
 \newcommand{\importcode}[1]{
     \lstinputlisting{#1}
+}
+
+\newcommand{\key}[1]{%
+  \fbox{\raisebox{0pt}[0.8em][0.2em]{\textsf{#1}}}%
 }
 
 % Alias for inline code
