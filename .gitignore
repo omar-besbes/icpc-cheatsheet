@@ -16,9 +16,6 @@
 *.bak
 *.swp
 
-# Compiled PDFs
-*.pdf
-
 # Ignore HTML build files
 *.html
 *.css

@@ -1,7 +1,8 @@
-\documentclass[a4paper,landscape]{article} % Define the document class and set to A4 paper in two-column format
+\documentclass[a4paper,landscape,openany]{report} % Define the document class and set to A4 paper in two-column format
 
 % Package Imports
 \usepackage{amsmath}         % For advanced mathematical formatting
+\usepackage{amssymb}         % For advanced mathematical formatting
 \usepackage{listings}        % For including and formatting source code
 \usepackage{geometry}        % For setting page margins
 \usepackage{titlesec}        % For customizing section title formatting
@@ -11,10 +12,14 @@
 \usepackage{lipsum}          % For including dummy text
 \usepackage{multicol}        % For splitting the document to columns
 \usepackage{xfrac}           % For creating fractions with improved layout and style
+\usepackage{enumitem}        % For customizing lists (bullet points, etc.)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Package Settings
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Adjust the left padding for bullet points
+\setlist[itemize]{left=0pt}  % Removes default left padding for itemize
 
 % Set the page margins
 \geometry{
@@ -56,9 +61,20 @@
 \fancyhead[L]{\leftmark}     % Section name on the left header
 \fancyhead[R]{\rightmark}    % Subsection name on the right header
 
-% Title formatting for sections
-\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule] % Format section titles with larger, bold text and a rule below
-\titleformat{\subsection}{\bfseries}{}{0em}{} % Format subsection titles in bold
+% Title formatting for chapters
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries} % Format for the title (size and boldness)
+{}                          % No "Chapter X" prefix
+{0pt}                       % Space between title and number (none)
+{\Huge}                     % Style of the chapter title
+
+% Spacing adjustment for chapter titles (no page break)
+\titlespacing*{\chapter}{0pt}{-25pt}{10pt}  % 0pt left space, 0pt top space, 10pt space after title
+
+% Remove the page break before chapters
+\makeatletter
+\def\chapter{\@afterindentfalse \secdef\@chapter\@schapter}
+\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Custom Commands, Environments and Aliases
@@ -95,6 +111,10 @@
     \lstinputlisting{#1}
 }
 
+\newcommand{\key}[1]{%
+  \fbox{\raisebox{0pt}[0.8em][0.2em]{\textsf{#1}}}%
+}
+
 % Alias for inline code
 \let\inlinecode\lstinline
 
@@ -119,14 +139,12 @@
 % \maketitle                 % Create the title page
 
 \begin{multicols*}{3}
-
     % Generate a table of contents
     \tableofcontents           % Automatically generate the table of contents based on sections
     \newpage                   % Start a new page after the table of contents
-
-    % Include content from an external file
-    \input{src/content.tex}    % This line includes the content file, where topics and articles will be defined
-
 \end{multicols*}
+
+% Include content from an external file
+\input{src/content.tex}    % This line includes the content file, where topics and articles will be defined
 
 \end{document}

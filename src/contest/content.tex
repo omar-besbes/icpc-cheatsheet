@@ -1,0 +1,79 @@
+\chapter{ During Contest }
+
+\section{ Contest begin }
+
+\begin{enumerate}[topsep=0pt, partopsep=0pt, itemsep=2pt, parsep=0pt, left=0pt]
+   \item The typer gives statements to his teammates and keeps the PC password
+   \item Write the password in QWERTY
+   \item Set the language layout to AZERTY: \inlinecode!setxkbmap fr!
+   \item Login to PC2
+   \item Open standings
+   \item Open VSCode and \key{Ctrl} + \key{Shift} + \key{P} autosave
+   \item Write template \importcode{code/template.cpp}
+   \item Check standings
+   \item Change $\sim$/.bashrc \importcode{code/.bashrc}
+\end{enumerate}
+
+\section{ Troubleshooting }
+\subsection{ Pre-submit }
+\begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=2pt, parsep=0pt, left=0pt]
+   \item Write a few simple test cases if sample is not enough.
+   \item Are time limits close? If so, generate max cases.
+   \item Is the memory usage fine? Could anything overflow?
+   \item Make sure to submit the right file.
+\end{itemize}
+
+\subsection{ Wrong answer }
+\begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=2pt, parsep=0pt, left=0pt]
+   \item Print your solution! Print debug output, as well.
+   \item Are you clearing all data structures between test cases?
+   \item Can your algorithm handle the whole range of input?
+   \item Read the full problem statement again.
+   \item Do you handle all corner cases correctly?
+   \item Have you understood the problem correctly?
+   \item Any uninitialized variables?
+   \item Any overflows?
+   \item Confusing N and M, i and j, etc.?
+   \item Are you sure your algorithm works?
+   \item What special cases have you not thought of?
+   \item Are you sure the STL functions you use work as you think?
+   \item Add some assertions, maybe resubmit.
+   \item Create some testcases to run your algorithm on.
+   \item Go through the algorithm for a simple case.
+   \item Go through this list again.
+   \item Explain your algorithm to a teammate.
+   \item Ask the teammate to look at your code.
+   \item Go for a small walk, e.g. to the toilet.
+   \item Is your output format correct? (including whitespace)
+   \item Rewrite your solution from the start or let a teammate do it.
+\end{itemize}
+
+\subsection{ Runtime error }
+\begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=2pt, parsep=0pt, left=0pt]
+   \item Have you tested all corner cases locally?
+   \item Any uninitialized variables?
+   \item Are you reading/writing outside the range of any vector?
+   \item Any assertions that might fail?
+   \item Any possible division by 0? (\inlinecode!mod 0! for example)
+   \item Any possible infinite recursion?
+   \item Invalidated pointers or iterators?
+   \item Are you using too much memory?
+   \item Debug with resubmits (e.g. remapped signals, see Various).
+\end{itemize}
+
+\subsection{ Time limit exceeded }
+\begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=2pt, parsep=0pt, left=0pt]
+   \item Do you have any possible infinite loops?
+   \item What is the complexity of your algorithm?
+   \item Are you copying a lot of unnecessary data? (References)
+   \item How big is the input and output? (consider \inlinecode!scanf!)
+   \item Avoid \inlinecode!vector!, \inlinecode!map!. (use
+         \inlinecode!arrays!/\inlinecode!unordered_map!)
+   \item What do your teammates think about your algorithm?
+\end{itemize}
+
+\subsection{ Memory limit exceeded }
+\begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=2pt, parsep=0pt, left=0pt]
+   \item What is the max amount of memory your algorithm should need?
+   \item Are you clearing all data structures between test cases?
+\end{itemize}
