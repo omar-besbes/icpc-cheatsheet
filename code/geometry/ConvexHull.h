@@ -7,7 +7,6 @@
 
 template <class P>
 vector<P> convexHull(vector<P> &v) {
-  int n = v.size();
   vector<P> ch;
   auto chk = [&](P z) {
     auto x = ch[ch.size() - 2], y = ch[ch.size() - 1];

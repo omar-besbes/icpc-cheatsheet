@@ -15,10 +15,13 @@ struct Point {
   P operator*(T d) const { return P(x * d, y * d); }
   P operator/(T d) const { return P(x / d, y / d); }
   T dot(P p) const { return x * p.x + y * p.y; }
+  T dot(P a, P b) const { return (a - *this).dot(b - *this); }
   T cross(P p) const { return x * p.y - y * p.x; }
   T cross(P a, P b) const { return (a - *this).cross(b - *this); }
   T dist2() const { return x * x + y * y; }
+  T dist2(P p) const { return dist2(*this - p); }
   double dist() const { return sqrt((double)dist2()); }
+  double dist(P p) const { return sqrt((double)dist2(p)); }
   // angle to x-axis in interval [-pi, pi]
   double angle() const { return atan2(y, x); }
   P unit() const { return *this / dist(); }  // makes dist()=1
@@ -27,6 +30,9 @@ struct Point {
   // returns point rotated 'a' radians ccw around the origin
   P rotate(double a) const {
     return P(x * cos(a) - y * sin(a), x * sin(a) + y * cos(a));
+  }
+  friend istream &operator>>(istream &os, P &p) {
+    return os >> p.x >> p.y;
   }
   friend ostream &operator<<(ostream &os, P p) {
     return os << "(" << p.x << "," << p.y << ")";
