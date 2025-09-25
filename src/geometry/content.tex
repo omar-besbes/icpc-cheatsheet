@@ -1,16 +1,51 @@
-\section{ Geometry }
+\chapter{ Geometry }
 
-\subsection{ Point }
+\section{ Point }
 \importcode{code/geometry/Point.h}
 
-\subsection{ Polygon Area }
+\section{ Line }
+Line $a \cdot x + b \cdot y + c = 0$:
+\begin{itemize}
+   \item $\vec{n}$ = (a, b) is a normal vector, $\vec{d}$ = (-b, a) is a direction vector
+   \item parallel lines sitting at distance r have equations: $ a \cdot x + b \cdot y +
+            c \pm r\sqrt{a^2 + b^2} = 0 $
+   \item distance of a point (x, y) to the line is: $ \frac{a \cdot x + b \cdot y +
+               c}{\sqrt{a^2 + b^2}} = 0 $
+   \item The sign of evaluating a point (x, y), $ a \cdot x + b \cdot y + c $ determines
+         the position of the point relative to that line (0 if the point lies on the
+         line).
+\end{itemize}
+\importcode{code/geometry/Line.h}
+
+\section{ Segment }
+\importcode{code/geometry/Segment.h}
+
+\section{ Ray }
+\importcode{code/geometry/Ray.h}
+
+\section{ Bisector }
+\importcode{code/geometry/Bisector.h}
+
+\section{ Circle }
+\importcode{code/geometry/Circle.h}
+
+\section{ Closest Pair }
+\importcode{code/geometry/ClosestPair.h}
+
+\section{ Rotating Callipers }
+\importcode{code/geometry/RotatingCallipers.h}
+
+\section{ Polygon Area }
 \importcode{code/geometry/PolygonArea.h}
 
-\subsection{ In Polygon }
+\section{ In Polygon }
 \importcode{code/geometry/InPolygon.h}
 
-\subsection{ Circle Tangents }
+\section{ Circle Tangents }
 \importcode{code/geometry/CircleTangents.h}
 
-\subsection{ Convex Hull }
+\section{ Convex Hull }
 \importcode{code/geometry/ConvexHull.h}
+
+\section{ Point 3D }
+\importcode{code/geometry/Point3D.h}

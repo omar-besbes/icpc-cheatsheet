@@ -60,7 +60,12 @@ jobs:
           path: .build
 
       - name: Setup Netlify CLI
-        run: npm install netlify-cli --save-dev
+        run: npm install -g netlify-cli
+
+      - name: Install jq tool
+        run: |
+          sudo apt-get update
+          sudo apt-get install jq
 
       - name: Deploy PDF to Netlify
         id: deploy
@@ -70,27 +75,26 @@ jobs:
         run: |
           echo "/ /cheatsheet.pdf 200" > .build/_redirects
 
-          deploy_url=""
           if [ "${{ github.event_name }}" == "pull_request" ]; then
             netlify deploy \
               --dir .build \
               --message="Deploy preview for PR #${{ github.event.pull_request.number }}" \
-              --alias="preview-${{ github.run_id }}" | \
-              tee cmd.log
-            deploy_url=$(grep 'Website draft URL:' cmd.log | awk '{print $NF}')
+              --alias="preview-${{ github.run_id }}" \
+              --json > deploy.json
+            DEPLOY_URL=$(jq -r '.deploy_url' deploy.json)
+            BUILD_LOGS=$(jq -r '.logs' deploy.json)
           elif [ "${{ github.ref }}" == "refs/heads/main" ]; then
             netlify deploy \
               --dir .build \
               --message="Deploy (main branch)" \
-              --prod | \
-              tee cmd.log
-            deploy_url=$(grep 'Unique deploy URL:' cmd.log | awk '{print $NF}')
+              --prod \
+              --json > deploy.json
+            DEPLOY_URL=$(jq -r '.url // .deploy_url' deploy.json)
+            BUILD_LOGS=$(jq -r '.logs' deploy.json)
           fi
 
-          build_logs=$(grep 'Build logs:' cmd.log | awk '{print $NF}')
-
-          echo "deploy_url=$deploy_url" >> "$GITHUB_OUTPUT"
-          echo "build_logs=$build_logs" >> "$GITHUB_OUTPUT"
+          echo "deploy_url=${DEPLOY_URL}" >> "$GITHUB_OUTPUT"
+          echo "build_logs=${BUILD_LOGS}" >> "$GITHUB_OUTPUT"
 
       - name: Comment on Pull Request
         if: github.event_name == 'pull_request'
