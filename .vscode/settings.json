@@ -1,0 +1,16 @@
+{
+   // Always use your presets
+   "cmake.useCMakePresets": "always",
+   "cmake.configureOnOpen": true,
+ 
+   // Optional: stricter/modern IntelliSense
+   "C_Cpp.default.intelliSenseMode": "gcc-x64",
+   "C_Cpp.default.cppStandard": "c++17",
+ 
+   // IMPORTANT: mirror your always-included header for IntelliSense
+   // (Even if compile_commands has -include, this guarantees no squiggles.)
+   "C_Cpp.default.forcedInclude": [
+     "${workspaceFolder}/code/default.h"
+   ]
+ }
+ 

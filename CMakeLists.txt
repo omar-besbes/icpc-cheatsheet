@@ -14,6 +14,9 @@ set(CMAKE_CXX_FLAGS_DEBUG "-g")
 # Set the directory of test sources
 set(TEST_DIR "test")
 
+# Enable testing
+enable_testing()
+
 # Collect test sources
 file(GLOB_RECURSE TEST_SOURCES "${TEST_DIR}/*.cpp")
 # Add an executable for tests
@@ -22,5 +25,3 @@ foreach(test_file ${TEST_SOURCES})
   add_executable(${test_name} ${test_file})
   add_test(NAME ${test_name} COMMAND ${test_name})
 endforeach()
-# Enable testing
-enable_testing()
