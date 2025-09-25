@@ -1,5 +1,5 @@
-/** 
- * Matrix<T,N>: N×N; init with double braces.
+/**
+ * Matrix<T,N>: N*N; init with double braces.
  * e.g. `Matrix<int,2> A; A.d={{ {0,1}, {1,1} }};`
  */
 
