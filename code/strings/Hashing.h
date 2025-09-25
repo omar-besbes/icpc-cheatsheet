@@ -7,14 +7,14 @@ struct Hashing {
    const ll mod = 1e9 + 7;
    vector<vector<ll>> p, pref;
    // assuming s is only composed of a-z characters
-   Hashing(string &s) {
+   Hashing(const string &s) {
+      int n = s.length();
       // change if s contains other chars than a-z
       // primes should be greater than number of possible characters
       vector primes{31, 37, 43};
-      p.resize(primes.size());
+      p.assign(primes.size(), vector<ll>(n + 1));
+      pref.assign(primes.size(), vector<ll>(n + 1));
       for (int i = 0; i < primes.size(); i++) p[i][0] = 1, p[i][1] = primes[i];
-      int n = s.length();
-      vector<vector<ll>> pref(n + 1);
       for (int i = 0; i < p.size(); i++) {
          p[i].resize(n + 1);
          for (int j = 0; j < n; j++) {
@@ -27,12 +27,19 @@ struct Hashing {
    }
    // hash of s[l..r] inclusive for l & r
    vector<ll> get(int l, int r) {
-      int n = p[0].size();
+      int n = p[0].size() - 1;
       vector<ll> ans(p.size());
       for (int i = 0; i < p.size(); i++) {
          ans[i] = (pref[i][r + 1] - pref[i][l] + mod) % mod;
          ans[i] = ans[i] * p[i][n - l] % mod;
       }
       return ans;
+   }
+   bool compare(pair<int, int> r1, pair<int, int> r2) {
+      auto res1 = get(r1.first, r1.second);
+      auto res2 = get(r2.first, r2.second);
+      for (int i = 0; i < p.size(); i++)
+         if (res1[i] != res2[i]) return false;
+      return true;
    }
 };
