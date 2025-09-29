@@ -40,9 +40,10 @@
 % \importcode{code/graph/MaximumIndependentSet.h}
 
 \section{Tree}
-\importcode{code/graph/LCA.h}
-% \importcode{code/graph/CompressTree.h}
 \importcode{code/graph/HLD.h}
+\importcode{code/graph/LCA.h}
+\importcode{code/graph/VirtualTree.h}
+% \importcode{code/graph/CompressTree.h}
 % \importcode{code/graph/LinkCutTree.h}
 % \importcode{code/graph/DirectedMST.h}
 \importcode{code/graph/VirtualTree.h}
@@ -56,8 +57,8 @@
 Create an $N\times N$ matrix \texttt{mat}, and for each edge $a \rightarrow b
    \in G$, do \texttt{mat[a][b]--, mat[b][b]++} (and \texttt{mat[b][a]--,
    mat[a][a]++} if $G$ is undirected). Remove the $i$th row and column and take
-the determinant; this yields the number of directed spanning trees rooted at
-$i$ (if $G$ is undirected, remove any row/column).
+ the determinant; this yields the number of directed spanning trees rooted at
+ $i$ (if $G$ is undirected, remove any row/column).
 
 \subsection{Erdős-Gallai theorem}
 % Source: https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93Gallai_theorem
