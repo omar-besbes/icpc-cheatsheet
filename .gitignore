@@ -31,6 +31,7 @@
 *.sh
 *.tmp
 .DS_Store
+*.pdf
 
 # Ignore build directories
 .build/
